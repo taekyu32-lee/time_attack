@@ -34,3 +34,11 @@ def signin(request):
             return redirect('/home')
         else:
             return redirect('/login')
+
+def home(request):
+    if request.method == 'GET':
+        user = request.user.is_authenticated
+        if user:
+            return render(request,'home.html')
+        else:
+            return redirect('/login')
